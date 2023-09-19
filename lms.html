@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LMS Login</title>
+    <link rel="stylesheet" type="text/css" href="logincss.css">
+</head>
+<body>
+     <div class="login-container">
+     <img src="background-image.jpg" alt="Background Image" height="80%" width="60%">
+        <div class="login-form">
+            <h2>Get Your Free LMS Platform Now</h2>
+    <form id="loginForm">
+        <div class="form-row">
+        <input type="text" id="firstName" name="firstName" placeholder="First name">
+        <span id="firstNameError" style="color: red;"></span><br>
+
+       
+        <input type="text" id="lastName" name="lastName" placeholder="Last name">
+        <span id="lastNameError" style="color: red;"></span><br>
+        </div>
+         <div class="form-row">
+        
+        <input type="text" id="country" name="country" placeholder="Country">
+        <span id="countryError" style="color: red;"></span><br>
+
+        
+        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+        <span id="phoneNumberError" style="color: red;"></span><br>
+        </div>
+        <div class="form-row">
+        
+        <input type="text" id="organizationName" name="organizationName" placeholder="Organization Name">
+        <span id="organizationNameError" style="color: red;"></span><br>
+
+       
+        <input type="number" id="organizationSize" name="organizationSize" placeholder="Organization Size">
+        <span id="organizationSizeError" style="color: red;"></span><br>
+        </div>
+        <div class="form-row">
+        
+        <input type="text" id="email" name="email" placeholder="Work E-Mail ID">
+        <span id="emailError" style="color: red;"></span><br>
+        </div>
+         
+	<label>
+       <input type="checkbox">I authorise education learning submission.</input>
+	</label>
+	<br>
+	<button type="submit" value="Submit">Submit</button>
+    </form>
+    </div>
+    </div>
+    <script>
+        const loginForm = document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Validation functions for each field
+            function validateFirstName() {
+                const firstName = document.getElementById("firstName").value.trim();
+                const firstNameError = document.getElementById("firstNameError");
+                if (firstName === "") {
+                    firstNameError.textContent = "First Name is required.";
+                    return false;
+                }
+                firstNameError.textContent = "";
+                return true;
+            }
+
+            function validateLastName() {
+                const lastName = document.getElementById("lastName").value.trim();
+                const lastNameError = document.getElementById("lastNameError");
+                if (lastName === "") {
+                    lastNameError.textContent = "Last Name is required.";
+                    return false;
+                }
+                lastNameError.textContent = "";
+                return true;
+            }
+
+            function validateCountry() {
+                const country = document.getElementById("country").value.trim();
+                const countryError = document.getElementById("countryError");
+                if (country === "") {
+                    countryError.textContent = "Country is required.";
+                    return false;
+                }
+                countryError.textContent = "";
+                return true;
+            }
+
+            function validatePhoneNumber() {
+                const phoneNumber = document.getElementById("phoneNumber").value.trim();
+                const phoneNumberError = document.getElementById("phoneNumberError");
+                // You can add more specific phone number validation logic here
+                if (phoneNumber === "") {
+                    phoneNumberError.textContent = "Phone Number is required.";
+                    return false;
+                }
+                phoneNumberError.textContent = "";
+                return true;
+            }
+
+            function validateOrganizationName() {
+                const organizationName = document.getElementById("organizationName").value.trim();
+                const organizationNameError = document.getElementById("organizationNameError");
+                if (organizationName === "") {
+                    organizationNameError.textContent = "Organization Name is required.";
+                    return false;
+                }
+                organizationNameError.textContent = "";
+                return true;
+            }
+
+            function validateOrganizationSize() {
+                const organizationSize = document.getElementById("organizationSize").value.trim();
+                const organizationSizeError = document.getElementById("organizationSizeError");
+                // You can add more specific validation for organization size here
+                if (organizationSize === "") {
+                    organizationSizeError.textContent = "Organization Size is required.";
+                    return false;
+                }
+                organizationSizeError.textContent = "";
+                return true;
+            }
+
+            function validateEmail() {
+                const email = document.getElementById("email").value.trim();
+                const emailError = document.getElementById("emailError");
+                // Basic email validation pattern
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!emailPattern.test(email)) {
+                    emailError.textContent = "Invalid email address.";
+                    return false;
+                }
+                emailError.textContent = "";
+                return true;
+            }
+
+            // Perform all field validations
+            const isFirstNameValid = validateFirstName();
+            const isLastNameValid = validateLastName();
+            const isCountryValid = validateCountry();
+            const isPhoneNumberValid = validatePhoneNumber();
+            const isOrganizationNameValid = validateOrganizationName();
+            const isOrganizationSizeValid = validateOrganizationSize();
+            const isEmailValid = validateEmail();
+
+            // If all fields are valid, you can submit the form
+            if (
+                isFirstNameValid &&
+                isLastNameValid &&
+                isCountryValid &&
+                isPhoneNumberValid &&
+                isOrganizationNameValid &&
+                isOrganizationSizeValid &&
+                isEmailValid
+            ) {
+                loginForm.submit(); // Submit the form
+            }
+        });
+    </script>
+</body>
+</html>
+
